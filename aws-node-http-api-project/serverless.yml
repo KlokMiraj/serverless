@@ -1,0 +1,31 @@
+service: aws-node-http-api-project
+frameworkVersion: '3'
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  createNote:
+    handler: create-notes.create_note
+    events:
+      - httpApi:
+          path: /create_note
+          method: get
+  getNote:
+    handler: create-notes.get_note
+    events:
+      - httpApi:
+          path: /get_note/{id}
+          method: get
+  updateNote:
+    handler: create-notes.update_note
+    events:
+      - httpApi:
+          path: /update_note/{id}
+          method: put
+  deleteNote:
+    handler: create-notes.delete_note
+    events:
+      - httpApi:
+          path: /delete_note/{id}
+          method: delete
