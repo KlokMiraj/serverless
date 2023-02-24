@@ -29,3 +29,18 @@ functions:
       - httpApi:
           path: /delete_note/{id}
           method: delete
+
+
+resources: 
+  Resources:
+    notesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: notes
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: notesid
+            AttributeType: S
+        KeySchema:
+          - AttributeName: notesid
+            KeyType: HASH

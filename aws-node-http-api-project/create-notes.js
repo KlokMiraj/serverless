@@ -20,7 +20,7 @@ module.exports.get_note=async (event) => {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: "lambda for get notes worked",
+        message: "lambda for get notes worked"+notesId+"",
         input: event,
       },
       null,
