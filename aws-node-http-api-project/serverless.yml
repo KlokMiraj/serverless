@@ -1,9 +1,13 @@
 service: aws-node-http-api-project
 frameworkVersion: '3'
+
+
 provider:
   name: aws
   runtime: nodejs18.x
 
+
+# lambda functions
 functions:
   createNote:
     handler: create-notes.create_note
@@ -30,8 +34,9 @@ functions:
           path: /delete_note/{id}
           method: delete
 
+# dynomo configuration
 
-resources: 
+resources:
   Resources:
     notesTable:
       Type: AWS::DynamoDB::Table

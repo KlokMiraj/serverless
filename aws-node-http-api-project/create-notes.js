@@ -2,6 +2,22 @@
 
 module.exports.create_note=async (event) => {
   return {
+
+    let data =JSON.parse(event.body);
+    try{
+      const params = {
+        TableName: notesTable,
+        Item: {
+          id: data.id,
+          title: data.title,
+          content: data.content,
+          attachment: data.attachment,
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      };
+      await dynamoDb.put(params).promise();
+    }
     statusCode: 201,
     body: JSON.stringify(
       {
